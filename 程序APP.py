@@ -47,7 +47,7 @@ cs = st.selectbox("cardiogenic shock:", options=[0, 1], format_func=lambda x: 'N
 rr = st.number_input("respiratory rate:", min_value=0, max_value=60, value=18)
 
 # Process inputs and make predictions
-feature_values = [age, apsiii, temperature, Glu, betablocker, acei.arb, Vasoactive_drugs, spo2, aspirin, hr, loop_diuretics, cs, rr]
+feature_values = [age, apsiii, temperature, Glu, betablocker, acei_arb, Vasoactive_drugs, spo2, aspirin, hr, loop_diuretics, cs, rr]
 features = np.array([feature_values])
 
 
