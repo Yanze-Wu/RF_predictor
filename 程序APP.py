@@ -81,7 +81,7 @@ if st.button("Predict"):
     class_index = predicted_class  # 当前预测类别
     shap_fig = shap.force_plot(
         explainer.expected_value[class_index],
-        shap_values[:,:,:,class_index],
+        shap_values[:,:,class_index],
         pd.DataFrame([feature_values], columns=feature_ranges.keys()),
         matplotlib=True,
     )
