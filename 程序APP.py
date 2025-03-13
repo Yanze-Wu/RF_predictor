@@ -14,14 +14,14 @@ feature_ranges = {
     "apsiii": {"type": "numerical", "min": 0.0, "max": 160.0, "default": 50.0},
     "temperature": {"type": "numerical", "min": 30.0, "max": 41.0, "default": 36.8},
     "Glu": {"type": "numerical", "min": 0.0, "max": 1500.0, "default": 240.0},
-    
-    # ✅ 确保和训练时一致
-    "betablocker": {"type": "categorical", "options": [0, 1]},
-    "acei.arb": {"type": "categorical", "options": [0, 1]},
-    "Vasoactive_drugs": {"type": "categorical", "options": [0, 1]},
-    "aspirin": {"type": "categorical", "options": [0, 1]},
-    "cs": {"type": "categorical", "options": [0, 1]},
-    "loop_diuretics": {"type": "categorical", "options": [0, 1]},
+
+    # ✅ 变成 OneHotEncoder 之后的特征名（匹配训练时的格式）
+    "cs_1": {"type": "categorical", "options": [0, 1]},
+    "acei.arb_1": {"type": "categorical", "options": [0, 1]},
+    "aspirin_1": {"type": "categorical", "options": [0, 1]},
+    "betablocker_1": {"type": "categorical", "options": [0, 1]},
+    "loop_diuretics_1": {"type": "categorical", "options": [0, 1]},
+    "Vasoactive_drugs_1": {"type": "categorical", "options": [0, 1]},
 
     "spo2": {"type": "numerical", "min": 0.0, "max": 100.0, "default": 98.0},
     "hr": {"type": "numerical", "min": 0.0, "max": 165.0, "default": 98.0},
