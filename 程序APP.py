@@ -48,7 +48,10 @@ for feature, properties in feature_ranges.items():
     feature_values.append(value)
 
 # 转换为模型输入格式
-features = np.array([feature_values])
+expected_features = ['age', 'apsiii', 'temperature', 'Glu', 'betablocker_1', 
+                     'acei.arb_1', 'Vasoactive_drugs_1', 'spo2', 'aspirin_1', 
+                     'hr', 'loop_diuretics_1', 'cs_1', 'rr']
+features = pd.DataFrame(features, columns=expected_features)
 
 # 预测与 SHAP 可视化
 if st.button("Predict"):
