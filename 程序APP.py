@@ -21,7 +21,7 @@ feature_ranges = {
     "temperature": {"type": "numerical", "min": 30.0, "max": 41.0, "default": 36.8},
     "hr": {"type": "numerical", "min": 0.0, "max": 165.0, "default": 98.0},
     "rr": {"type": "numerical", "min": 0.0, "max": 60.0, "default": 18.0},
-    "spo2": {"type": "numerical", "min": 0.0, "max": 100.0, "default": 98.0}
+    "spo2": {"type": "numerical", "min": 0.0, "max": 100.0, "default": 98.0},
     "apsiii": {"type": "numerical", "min": 0.0, "max": 160.0, "default": 50.0},
     "Glu": {"type": "numerical", "min": 0.0, "max": 1500.0, "default": 240.0}
 }
