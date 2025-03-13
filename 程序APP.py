@@ -50,7 +50,7 @@ Vasoactive_drugs = st.selectbox("Vasoactive_drugs:", options=[0, 1], format_func
 
 
 # Process inputs and make predictions
-feature_values = [age, temperature, hr, rr, spo2, apsiii, Glu, cs, acei.arb, aspirin, betablocker, loop_diuretics, Vasoactive_drugs]
+feature_values = [age, temperature, hr, rr, spo2, apsiii, Glu, cs, acei_arb, aspirin, betablocker, loop_diuretics, Vasoactive_drugs]
 features = np.array([feature_values])
 
 
