@@ -11,7 +11,7 @@ model = joblib.load('RF.pkl')
 
 # Define feature names
 feature_names = [
-    "apsiii", "temperature", "glucose level", "betablocker", "acei.arb",
+    "apsiii", "temperature", "glucose level", "betablocker", "acei_arb",
     "Vasoactive_drugs", "spo2", "aspirin", "heart rate",
      "loop_diuretics", "cardiogenic shock", "respiratory rate", "age"
 ]
