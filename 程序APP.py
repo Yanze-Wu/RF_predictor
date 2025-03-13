@@ -24,7 +24,7 @@ age = st.number_input("age:", min_value=1, max_value=120, value=50)
 # apsiii: numerical input
 apsiii = st.number_input("apsiii:", min_value=0, max_value=160, value=50)
 # temperature: numerical input
-temperature = st.number_input("temperature:", min_value=30, max_value=41, value=36.8)
+temperature = st.number_input("temperature:", min_value=30.0, max_value=41.0, value=36.8)
 # Glu: numerical input,默认值为 50.0
 Glu = st.number_input("glucose level:", min_value=0, max_value=1500, value=280)
 # betablocker: categorical selection
