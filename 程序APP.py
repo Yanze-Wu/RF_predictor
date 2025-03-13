@@ -25,26 +25,28 @@ age = st.number_input("age:", min_value=1, max_value=120, value=50)
 temperature = st.number_input("temperature:", min_value=30.0, max_value=41.0, value=36.8)
 # hr: numerical input,默认值为 98
 hr = st.number_input("heart rate:", min_value=0, max_value=165, value=98)
-# rr: numerical input,默认值为 50.0
+# rr: numerical input,默认值为 18
 rr = st.number_input("respiratory rate:", min_value=0, max_value=60, value=18)
+# spo2: numerical input,默认值为 50.0
+spo2 = st.number_input("spo2:", min_value=0, max_value=100, value=98)
 # apsiii: numerical input
 apsiii = st.number_input("apsiii:", min_value=0, max_value=160, value=50)
 # Glu: numerical input,默认值为 50.0
 Glu = st.number_input("glucose level:", min_value=0, max_value=1500, value=280)
-# betablocker: categorical selection
-betablocker = st.selectbox("betablocker:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
-# acei.arb: categorical selection
-acei_arb = st.selectbox("acei_arb:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
-# Vasoactive_drugs: categorical selection
-Vasoactive_drugs = st.selectbox("Vasoactive_drugs:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
-# spo2: numerical input,默认值为 50.0
-spo2 = st.number_input("spo2:", min_value=0, max_value=100, value=98)
-# aspirin: categorical selection
-aspirin = st.selectbox("aspirin:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
-# loop_diuretics: categorical selection
-loop_diuretics = st.selectbox("loop_diuretics:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
 # cs: categorical selection
 cs = st.selectbox("cardiogenic shock:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
+# acei.arb: categorical selection
+acei_arb = st.selectbox("acei_arb:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
+# aspirin: categorical selection
+aspirin = st.selectbox("aspirin:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
+# betablocker: categorical selection
+betablocker = st.selectbox("betablocker:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
+# loop_diuretics: categorical selection
+loop_diuretics = st.selectbox("loop_diuretics:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
+# Vasoactive_drugs: categorical selection
+Vasoactive_drugs = st.selectbox("Vasoactive_drugs:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
+
+
 
 
 # Process inputs and make predictions
