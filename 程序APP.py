@@ -69,17 +69,11 @@ if st.button("Predict"):
         advice = (
             f"According to our model, you have a high risk of ICU death. "
             f"The model predicts that your probability of having ICU death is {probability:.1f}%. "
-            "While this is just an estimate, it suggests that you may be at significant risk. "
-            "I recommend that you consult a cardiologist as soon as possible for further evaluation and "
-            "to ensure you receive an accurate diagnosis and necessary treatment."
         )
     else:
         advice = (
             f"According to our model, you have a low risk of ICU death. "
             f"The model predicts that your probability of not having ICU death is {probability:.1f}%. "
-            "However, maintaining a healthy lifestyle is still very important. "
-            "I recommend regular check-ups to monitor your heart health, "
-            "and to seek medical advice promptly if you experience any symptoms."
         )
 
         st.write(advice)
