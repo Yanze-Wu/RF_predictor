@@ -46,9 +46,6 @@ loop_diuretics = st.selectbox("loop_diuretics:", options=[0, 1], format_func=lam
 # Vasoactive_drugs: categorical selection
 Vasoactive_drugs = st.selectbox("Vasoactive_drugs:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
 
-
-
-
 # Process inputs and make predictions
 feature_values = [age, temperature, hr, rr, spo2, apsiii, Glu, cs, acei_arb, aspirin, betablocker, loop_diuretics, Vasoactive_drugs]
 features = np.array([feature_values])
