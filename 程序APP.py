@@ -29,8 +29,8 @@ temperature = st.number_input("temperature:", min_value=30.0, max_value=41.0, va
 Glu = st.number_input("glucose level:", min_value=0, max_value=1500, value=280)
 # betablocker: categorical selection
 betablocker = st.selectbox("betablocker:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
-# acei.arb: categorical selection
-acei.arb = st.selectbox("acei.arb:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
+# acei_arb: categorical selection
+acei_arb = st.selectbox("acei_arb:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
 # Vasoactive_drugs: categorical selection
 Vasoactive_drugs = st.selectbox("Vasoactive_drugs:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
 # spo2: numerical input,默认值为 50.0
