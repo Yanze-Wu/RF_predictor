@@ -10,22 +10,20 @@ model = joblib.load('RF.pkl')
 
 # 特征范围定义（根据提供的特征范围和数据类型）
 feature_ranges = {
-    "age": {"type": "numerical", "min": 1.0, "max": 120.0, "default": 50.0},
-    "apsiii": {"type": "numerical", "min": 0.0, "max": 160.0, "default": 50.0},
-    "temperature": {"type": "numerical", "min": 30.0, "max": 41.0, "default": 36.8},
-    "Glu": {"type": "numerical", "min": 0.0, "max": 1500.0, "default": 240.0},
-
-    # ✅ 变成 OneHotEncoder 之后的特征名（匹配训练时的格式）
-    "cs_1": {"type": "categorical", "options": [0, 1]},
+     "cs_1": {"type": "categorical", "options": [0, 1]},
     "acei.arb_1": {"type": "categorical", "options": [0, 1]},
     "aspirin_1": {"type": "categorical", "options": [0, 1]},
     "betablocker_1": {"type": "categorical", "options": [0, 1]},
     "loop_diuretics_1": {"type": "categorical", "options": [0, 1]},
     "Vasoactive_drugs_1": {"type": "categorical", "options": [0, 1]},
-
-    "spo2": {"type": "numerical", "min": 0.0, "max": 100.0, "default": 98.0},
+    
+    "age": {"type": "numerical", "min": 1.0, "max": 120.0, "default": 50.0},
+    "temperature": {"type": "numerical", "min": 30.0, "max": 41.0, "default": 36.8},
     "hr": {"type": "numerical", "min": 0.0, "max": 165.0, "default": 98.0},
     "rr": {"type": "numerical", "min": 0.0, "max": 60.0, "default": 18.0},
+    "spo2": {"type": "numerical", "min": 0.0, "max": 100.0, "default": 98.0}
+    "apsiii": {"type": "numerical", "min": 0.0, "max": 160.0, "default": 50.0},
+    "Glu": {"type": "numerical", "min": 0.0, "max": 1500.0, "default": 240.0}
 }
 
 # Streamlit 界面
