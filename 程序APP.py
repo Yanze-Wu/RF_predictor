@@ -15,7 +15,7 @@ feature_ranges = {
     "temperature": {"type": "numerical", "min": 30.0, "max": 41.0, "default": 36.8},
     "Glu": {"type": "numerical", "min": 0.0, "max": 1500.0, "default": 240.0},
     "betablocker": {"type": "categorical", "options": [0, 1]},
-    "acei_arb": {"type": "categorical", "options": [0, 1]},
+    "acei.arb": {"type": "categorical", "options": [0, 1]},
     "Vasoactive_drugs": {"type": "categorical", "options": [0, 1]},
     "spo2": {"type": "numerical", "min": 0.0, "max": 100.0, "default": 98.0},
     "aspirin": {"type": "categorical", "options": [0, 1]},
