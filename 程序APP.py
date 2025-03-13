@@ -73,7 +73,7 @@ if st.button("Predict"):
             "I recommend that you consult a cardiologist as soon as possible for further evaluation and "
             "to ensure you receive an accurate diagnosis and necessary treatment."
         )
-        else:
+    else:
         advice = (
             f"According to our model, you have a low risk of ICU death. "
             f"The model predicts that your probability of not having ICU death is {probability:.1f}%. "
