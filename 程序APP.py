@@ -8,83 +8,83 @@ import matplotlib.pyplot as plt
 # 加载保存的随机森林模型
 model = joblib.load('RF.pkl')
 
-
 # Define feature names
 feature_names = [
     "age", "temperature", "heart rate", "respiratory rate", "spo2",
     "apsiii", "glucose level", "cardiogenic shock", "acei_arb",
-     "aspirin", "betablocker", "loop_diuretics", "Vasoactive_drugs"
+    "aspirin", "betablocker", "loop_diuretics", "Vasoactive_drugs"
 ]
 
-# Streamlit 界面
-st.title("Prediction Model with SHAP Visualization")
+# Streamlit 界面布局
+st.set_page_config(layout="wide")  # 设定宽屏布局
 
-# age: numerical input,默认值为 50.0
-age = st.number_input("age:", min_value=1, max_value=120, value=50)
-# temperature: numerical input
-temperature = st.number_input("temperature:", min_value=30.0, max_value=41.0, value=36.8)
-# hr: numerical input,默认值为 98
-hr = st.number_input("heart rate:", min_value=0, max_value=165, value=98)
-# rr: numerical input,默认值为 18
-rr = st.number_input("respiratory rate:", min_value=0, max_value=60, value=18)
-# spo2: numerical input,默认值为 50.0
-spo2 = st.number_input("spo2:", min_value=0, max_value=100, value=98)
-# apsiii: numerical input
-apsiii = st.number_input("apsiii:", min_value=0, max_value=160, value=50)
-# Glu: numerical input,默认值为 50.0
-Glu = st.number_input("glucose level:", min_value=0, max_value=1500, value=280)
-# cs: categorical selection
-cs = st.selectbox("cardiogenic shock:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
-# acei.arb: categorical selection
-acei_arb = st.selectbox("acei_arb:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
-# aspirin: categorical selection
-aspirin = st.selectbox("aspirin:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
-# betablocker: categorical selection
-betablocker = st.selectbox("betablocker:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
-# loop_diuretics: categorical selection
-loop_diuretics = st.selectbox("loop_diuretics:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
-# Vasoactive_drugs: categorical selection
-Vasoactive_drugs = st.selectbox("Vasoactive_drugs:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
+# 左侧：用户输入区域
+with st.container():
+    st.title("ICU Mortality Prediction with SHAP")
 
-# Process inputs and make predictions
+    st.header("Patient Information")
+    
+    col1, col2, col3 = st.columns(3)  # 创建三列布局
+
+    with col1:
+        age = st.number_input("Age:", min_value=1, max_value=120, value=50)
+        temperature = st.number_input("Temperature:", min_value=30.0, max_value=41.0, value=36.8)
+        hr = st.number_input("Heart Rate:", min_value=0, max_value=165, value=98)
+        rr = st.number_input("Respiratory Rate:", min_value=0, max_value=60, value=18)
+
+    with col2:
+        spo2 = st.number_input("SpO2:", min_value=0, max_value=100, value=98)
+        apsiii = st.number_input("APSI II:", min_value=0, max_value=160, value=50)
+        Glu = st.number_input("Glucose Level:", min_value=0, max_value=1500, value=280)
+        cs = st.selectbox("Cardiogenic Shock:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
+
+    with col3:
+        acei_arb = st.selectbox("ACEI/ARB:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
+        aspirin = st.selectbox("Aspirin:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
+        betablocker = st.selectbox("Beta Blocker:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
+        loop_diuretics = st.selectbox("Loop Diuretics:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
+        Vasoactive_drugs = st.selectbox("Vasoactive Drugs:", options=[0, 1], format_func=lambda x: 'No (0)' if x == 0 else 'Yes (1)')
+
+# 组合输入特征
 feature_values = [age, temperature, hr, rr, spo2, apsiii, Glu, cs, acei_arb, aspirin, betablocker, loop_diuretics, Vasoactive_drugs]
 features = np.array([feature_values])
 
+# 右侧：预测结果和 SHAP 解释
+with st.sidebar:
+    st.header("Prediction Results")
 
-# 转换为模型输入格式
-features = np.array([feature_values])
+    if st.button("Predict"):
+        # 进行模型预测
+        predicted_class = model.predict(features)[0]
+        predicted_proba = model.predict_proba(features)[0]
 
-# 预测与 SHAP 可视化
-if st.button("Predict"):
-    # 模型预测
-    predicted_class = model.predict(features)[0]
-    predicted_proba = model.predict_proba(features)[0]
+        # 显示预测结果
+        st.subheader("Prediction Outcome")
+        st.write(f"**Predicted Class:** {'High Risk' if predicted_class == 1 else 'Low Risk'}")
+        probability = predicted_proba[predicted_class] * 100
+        st.write(f"**Probability:** {probability:.1f}%")
 
-    # Display prediction results
-    st.write(f"**Predicted Class:** {predicted_class}")
-    st.write(f"**Prediction Probabilities:** {predicted_proba}")
-    # 提取预测的类别概率
-    probability = predicted_proba[predicted_class] * 100
-    if predicted_class == 1:
-        advice = (
-            f"According to our model, you have a high risk of ICU death. "
-            f"The model predicts that your probability of having ICU death is {probability:.1f}%. "
-        )
-    else:
-        advice = (
-            f"According to our model, you have a low risk of ICU death. "
-            f"The model predicts that your probability of not having ICU death is {probability:.1f}%. "
-        )
+        if predicted_class == 1:
+            advice = (
+                f"Based on the model's prediction, you have a **high risk of ICU mortality**.\n"
+                f"The estimated probability is **{probability:.1f}%**."
+            )
+        else:
+            advice = (
+                f"Based on the model's prediction, you have a **low risk of ICU mortality**.\n"
+                f"The estimated probability is **{probability:.1f}%**."
+            )
+        st.info(advice)
 
-        st.write(advice)
-        # Calculate SHAP values and display force plot
+        # 计算 SHAP 值并显示解释
+        st.subheader("Feature Contribution (SHAP)")
         explainer = shap.TreeExplainer(model)
         shap_values = explainer.shap_values(pd.DataFrame([feature_values], columns=feature_names))
-        # 生成力图
-        class_index = predicted_class  # 当前预测类别
+
+        # 生成 SHAP 力图
         shap_fig = shap.force_plot(
-            explainer.expected_value[class_index],
-            shap_values[:, :, class_index],
+            explainer.expected_value[predicted_class],
+            shap_values[:, :, predicted_class],
             pd.DataFrame([feature_values], columns=feature_names),
             matplotlib=True,
         )
